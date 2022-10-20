@@ -1,8 +1,10 @@
 import { Button } from "antd";
-export const AntD = () => {
+const AntD = () => {
   return (
     <div className="App">
       <Button type="primary">Antd</Button>
     </div>
   );
 };
+
+export default AntD;

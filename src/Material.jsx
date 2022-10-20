@@ -1,8 +1,11 @@
 import { Button } from "@mui/material";
-export const Material = () => {
+
+const Material = () => {
   return (
     <div className="App">
       <Button variant="text">Material</Button>
     </div>
   );
 };
+
+export default Material;
