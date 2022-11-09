@@ -1,11 +1,11 @@
-import { lazy, Suspense } from "react";
-
+import { Suspense } from "react";
+import { lazyWithRetry } from "./lazy";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Home = lazy(() => import("./Home"));
-const Material = lazy(() => import("./Material"));
-const AntD = lazy(() => import("./Antd"));
+const Home = lazyWithRetry(() => import("./Home"));
+const Material = lazyWithRetry(() => import("./Material"));
+const AntD = lazyWithRetry(() => import("./Antd"));
 
 function App() {
   return (
