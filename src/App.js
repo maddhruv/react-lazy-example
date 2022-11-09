@@ -1,13 +1,17 @@
-import { Suspense } from "react";
-import { lazyWithRetry } from "./lazy";
+import { Suspense, useEffect } from "react";
+import { lazyWithRetryAndPrefetching } from "./lazy";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const Home = lazyWithRetry(() => import("./Home"));
-const Material = lazyWithRetry(() => import("./Material"));
-const AntD = lazyWithRetry(() => import("./Antd"));
+const Home = lazyWithRetryAndPrefetching(() => import("./Home"));
+const Material = lazyWithRetryAndPrefetching(() => import("./Material"));
+const AntD = lazyWithRetryAndPrefetching(() => import("./Antd"));
 
 function App() {
+  useEffect(() => {
+    Material.prefetch();
+    AntD.prefetch();
+  }, []);
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
